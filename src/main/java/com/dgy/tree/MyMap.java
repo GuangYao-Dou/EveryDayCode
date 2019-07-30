@@ -170,6 +170,7 @@ public class MyMap<K, V> {
     public V put(K key, V value){
         if (root == null){
             root = new TreeNode<>(key, value);
+            size++;
         }else {
             TreeNode<K, V> temp = root;
             while (temp != null){

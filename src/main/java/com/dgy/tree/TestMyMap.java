@@ -93,12 +93,12 @@ public class TestMyMap {
         Student student2 = new Student(25, "AA");
         Student student3 = new Student(19, "AA");
         Student student4 = new Student(23, "AA");
-//        Student student5 = new Student(23, "AA");
+        Student student5 = new Student(23, "AA");
         myMap.put(student1,10);
         myMap.put(student2,10);
         myMap.put(student3,10);
         myMap.put(student4,10);
-//        myMap.put(student5,10);
+        myMap.put(student5,10);
         Iterator iterator = myMap.iterator();
         while (iterator.hasNext()){
             System.out.println(iterator.next());
