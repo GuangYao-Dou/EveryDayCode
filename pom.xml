@@ -7,6 +7,18 @@
     <groupId>com.dgy</groupId>
     <artifactId>EveryDayCode</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
     <dependencies>
 
 
@@ -20,6 +32,12 @@
             <artifactId >javax.mail </artifactId >
             <version >1.5.4 </version >
         </dependency >
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 <!--    <build>-->
 <!--        <plugins>-->

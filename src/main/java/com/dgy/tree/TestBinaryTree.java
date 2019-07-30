@@ -1,5 +1,13 @@
 package com.dgy.tree;
 
+import sun.reflect.generics.tree.Tree;
+
+import javax.management.QueryEval;
+import java.util.LinkedList;
+import java.util.Objects;
+import java.util.Queue;
+import java.util.Stack;
+
 /**
  * Date: 2019/7/27
  * Time: 21:14
@@ -7,6 +15,7 @@ package com.dgy.tree;
  * Description：
  */
 public class TestBinaryTree {
+
     class TreeNode {
         char val;//数据值
         TreeNode left;//存储左孩子的引用
@@ -15,6 +24,16 @@ public class TestBinaryTree {
             this.val = val;
             this.left = null;
             this.right = null;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            TreeNode treeNode = (TreeNode) o;
+            return val == treeNode.val &&
+                    Objects.equals(left, treeNode.left) &&
+                    Objects.equals(right, treeNode.right);
         }
     }
     public int i = 0;//遍历字符串
@@ -113,4 +132,132 @@ public class TestBinaryTree {
                     height(root.left) : height(root.right))+1;
         }
     }
+
+    //先序遍历
+    void binaryTreePrevOrderNonR(TreeNode root){
+
+    }
+
+    //中序遍历
+    void binaryTreeinOrderTraversal(TreeNode root){
+        Stack<TreeNode> stack = new Stack<TreeNode>();
+        TreeNode cur = root;
+        while (cur != null || !stack.isEmpty()){
+            while (cur != null){
+                stack.push(cur);
+                cur = cur.left;
+            }
+            System.out.println(cur.val);
+            cur = stack.pop().right;
+        }
+    }
+
+    //后序遍历
+    void binaryTreesubsequentTraversal(TreeNode root){
+
+    }
+
+    //层序遍历
+    void binaryTreesequenceTraversal(TreeNode root){
+        Queue<TreeNode> queue = new LinkedList<>();
+        TreeNode cur = root;
+        while (cur != null && queue != null){
+            if (cur != null){
+                queue.offer(cur);
+            }
+            if (!queue.isEmpty()){
+                System.out.println(queue.peek());
+                cur = queue.poll().left;
+            }
+        }
+    }
+
+    //判断是否完全二叉树
+    boolean isCompleteBinaryTree(TreeNode root){
+        TreeNode cur = root;
+        Queue<TreeNode> queue = new LinkedList<>();
+        while (cur != null || queue.poll() != null){
+            queue.offer(cur.left);
+            queue.offer(cur.right);
+//            if (cur.left != null){
+//                cur = cur.left;
+//            }else {
+//                cur = cur.right;
+//            }
+//            queue.peek();
+            cur = queue.peek();
+        }
+        for (TreeNode temp : queue){
+            if (temp != null){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    //领扣的某个题100
+    public boolean isSameTree(TreeNode tree1, TreeNode tree2){
+        TreeNode cur1 = tree1;
+        TreeNode cur2 = tree2;
+        Queue<TreeNode> queue1 = new LinkedList<>();
+        Queue<TreeNode> queue2 = new LinkedList<>();
+        while (cur1 != null && cur2 != null){
+            queue1.offer(cur1.left);
+            queue1.offer(cur1.right);
+            queue2.offer(cur2.left);
+            queue2.offer(cur2.right);
+            cur1 = queue1.peek();
+            cur2 = queue2.peek();
+            if (!cur1.equals(cur2)){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    //领扣572
+    //二叉树的前序遍历  递归
+//    void binaryTreePrevOrder(TreeNode root){
+//        if(root == null) {
+//            return;
+//        }
+//        System.out.print(root.val+" ");
+//        binaryTreePrevOrder(root.left);
+//        binaryTreePrevOrder(root.right);
+//    }
+
+    //领扣的某个题
+    public boolean isContainTree(TreeNode parent, TreeNode son){
+        if (parent == null && son == null){
+            return true;
+        }
+        Queue<TreeNode> queue = new LinkedList<>();
+        TreeNode cur = parent;
+        while (cur != null && queue != null){
+            if (cur != null){
+                queue.offer(cur);
+            }
+            if (!queue.isEmpty()){
+                boolean flag = isSameTree(cur, son);
+                if (flag){
+                    return true;
+                }
+                cur = queue.peek().left;
+            }
+        }
+        return false;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
