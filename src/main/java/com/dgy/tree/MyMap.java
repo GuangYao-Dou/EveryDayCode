@@ -1,5 +1,7 @@
 package com.dgy.tree;
 
+import sun.awt.SunHints;
+
 import java.util.*;
 
 /**
@@ -140,7 +142,7 @@ public class MyMap<K, V> {
     private TreeNode<K, V> root;
     private Comparator<K> comparator;
 
-    public int compar(K a, K b){
+    private int compar(K a, K b){
         if (comparator != null){
             return comparator.compare(a, b);
         }else {
@@ -167,6 +169,7 @@ public class MyMap<K, V> {
         return size == 0;
     }
 
+    //二叉树插入操作
     public V put(K key, V value){
         if (root == null){
             root = new TreeNode<>(key, value);
@@ -200,4 +203,125 @@ public class MyMap<K, V> {
         }
         return value;
     }
+
+    //关于查找的方法
+    public TreeNode<K, V> getEntry(K key){
+        TreeNode<K, V> cur = root;
+        while (cur != null){
+            int temp = compar(cur.getKey(), key);
+            if (temp == 0){
+                return cur;
+            }else if(temp < 0){
+                cur = cur.right;
+            }else {
+                cur = cur.left;
+            }
+        }
+        return null;
+    }
+
+    public boolean containsKey(K key){
+        TreeNode<K, V> temp = getEntry(key);
+        return temp != null;
+    }
+
+    public V get(K key){
+        TreeNode<K, V> temp = getEntry(key);
+        return temp == null ? null : temp.getValue();
+    }
+
+    public boolean containsValue(V value){
+        Iterator<TreeNode< K, V>> iterator = this.iterator();
+        while (iterator.hasNext()){
+            if (iterator.next().getValue().equals(value)){
+                return true;
+            }
+        }
+        return false;
+    }
+    //查找key值最小的结点
+    public TreeNode<K, V> getMinKeyNode(TreeNode<K, V> temp){
+        if (temp == null) {
+            return null;
+        }
+        while (temp.left != null) {
+            temp = temp.left;
+        }
+        return temp;
+    }
+
+    //查找key值最大的结点
+    public TreeNode<K, V> getMaxKeyNode(TreeNode<K, V> temp){
+        if (temp == null) {
+            return null;
+        }
+        while (temp.right != null) {
+            temp = temp.right;
+        }
+        return temp;
+    }
+
+    /*BST的删除一个结点
+    https://leetcode-cn.com/problems/delete-node-in-a-bst/comments/
+        public TreeNode deleteNode(TreeNode root, int key) {
+        if (root == null) {
+            return null;
+        }
+        if (key < root.val) {
+            // 待删除节点在左子树中
+            root.left = deleteNode(root.left, key);
+            return root;
+        } else if (key > root.val) {
+            // 待删除节点在右子树中
+            root.right = deleteNode(root.right, key);
+            return root;
+        } else {
+            // key == root.val，root 为待删除节点
+            if (root.left == null) {
+                // 返回右子树作为新的根
+                return root.right;
+            } else if (root.right == null) {
+                // 返回左子树作为新的根
+                return root.left;
+            } else {
+                // 左右子树都存在，返回后继节点（右子树最左叶子）作为新的根
+                TreeNode successor = min(root.right);
+                successor.right = deleteMin(root.right);
+                successor.left = root.left;
+                return successor;
+            }
+        }
+    }
+
+    private TreeNode min(TreeNode node) {
+        if (node.left == null) {
+            return node;
+        }
+        return min(node.left);
+    }
+
+    private TreeNode deleteMin(TreeNode node) {
+        if (node.left == null) {
+            return node.right;
+        }
+        node.left = deleteMin(node.left);
+        return node;
+    }
+     */
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

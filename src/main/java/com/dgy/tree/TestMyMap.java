@@ -105,4 +105,22 @@ public class TestMyMap {
         }
         System.out.println(myMap.size());
     }
+
+    @Test
+    public void test4(){
+        MyMap myMap = new MyMap();
+        for (int i = 0; i < 10; i++){
+            myMap.put(i, i);
+        }
+        for (int i = 0; i < 10; i++){
+            System.out.println(myMap.get(i));
+            System.out.println(myMap.containsKey(i));
+        }
+        System.out.println(myMap.containsValue(1));
+    }
+
+    @Test
+    public void test5() {
+        System.out.println(0&1);
+    }
 }
