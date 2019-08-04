@@ -261,7 +261,12 @@ public class MyMap<K, V> {
         return temp;
     }
 
-    /*BST的删除一个结点
+    public TreeNode<K, V> delTreeNode(TreeNode<K, V> p, K key){
+//        if ()
+        return null;
+    }
+    /*
+        BST的删除一个结点
     https://leetcode-cn.com/problems/delete-node-in-a-bst/comments/
         public TreeNode deleteNode(TreeNode root, int key) {
         if (root == null) {
