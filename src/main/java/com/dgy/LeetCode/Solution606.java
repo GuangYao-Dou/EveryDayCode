@@ -17,6 +17,16 @@ package com.dgy.LeetCode;
 
 输出: "1(2(4))(3)"
  */
+/*
+输入: 二叉树: [1,2,3,null,4]
+       1
+     /   \
+    2     3
+     \
+      4
+
+输出: "1(2()(4))(3)"
+ */
 public class Solution606 {
     public void tree2strChild(TreeNode t,StringBuilder sb){
         if(t == null) {
@@ -44,12 +54,41 @@ public class Solution606 {
         }
     }
 
+    public void builderStr(TreeNode root, StringBuilder sb){
+        if (root == null) {
+            return;
+        }
+        sb.append(root.val);
+        if (root.left == null && root.right != null){
+            sb.append("()");
+            sb.append("(");
+            builderStr(root.right, sb);
+            sb.append(")");
+            return;
+        }else if (root.left != null && root.right != null){
+            sb.append("(");
+            builderStr(root.left, sb);
+            sb.append(")");
+            sb.append("(");
+            builderStr(root.right, sb);
+            sb.append(")");
+            return;
+        }else if (root.left != null && root.right == null){
+            sb.append("(");
+            builderStr(root.left, sb);
+            sb.append(")");
+            return;
+        }else{
+            return;
+        }
+    }
+
     public String tree2str(TreeNode t) {
         if(t == null) {
             return "";
         }
         StringBuilder sb = new StringBuilder();
-        tree2strChild(t,sb);
+        builderStr(t,sb);
         return sb.toString();
     }
 }
