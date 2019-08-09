@@ -1,4 +1,5 @@
 package com.dgy.saima;
+
 import java.util.*;
 
 import static java.util.Arrays.sort;
@@ -36,12 +37,12 @@ public class SaiMa0809 {
             }
             Object[] objects = result.toArray();
             int[] arr = new int[objects.length];
-            for (int i = 0; i < arr.length; i++){
-                arr [i] = (int) objects [i];
+            for (int i = 0; i < arr.length; i++) {
+                arr[i] = (int) objects[i];
             }
             Arrays.sort(arr);
-            for (int temp : arr){
-                System.out.println(temp+" ");
+            for (int temp : arr) {
+                System.out.println(temp + " ");
             }
             System.out.println();
         }
