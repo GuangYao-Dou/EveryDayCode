@@ -9,7 +9,7 @@ import java.util.Scanner;
  * Date: 2019/8/10
  * Time: 19:03
  * Author: vincent-Dou
- * Description： n^16
+ * Description：
  */
 public class SaiMa0810 {
     public static void main(String[] args) {
