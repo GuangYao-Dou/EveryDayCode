@@ -30,7 +30,6 @@ public class NiuKe081232 {
             }
             pHead = pHead.next;
         }
-        System.out.println(bigCur.next == smallHead.next);
         bigCur.next = null;
         smallCur.next = bigHead.next;
         return smallHead.next;
