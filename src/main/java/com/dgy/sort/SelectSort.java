@@ -9,6 +9,7 @@ import javax.rmi.CORBA.Util;
  * Description：选择排序
  */
 public class SelectSort {
+
     public static void main(String[] args) {
         int[] randomArr = Utils.getRandomArr(20, 8);
         System.out.println("排序前");
