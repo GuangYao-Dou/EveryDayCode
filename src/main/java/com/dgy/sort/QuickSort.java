@@ -55,7 +55,7 @@ public class QuickSort {
     }
 
     public static void quickSort1(int[] arr, int start, int end){
-        if (start > end){
+        if (start >= end){
             return;
         }
         int i, j, key;
