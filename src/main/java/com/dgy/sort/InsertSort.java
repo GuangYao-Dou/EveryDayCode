@@ -23,9 +23,7 @@ public class InsertSort {
             int j;
             for (j = i - 1; j >= 0; j--){
                 if (arr[j] <= temp) break;
-                if (arr[j] > temp){
-                    arr[j + 1] = arr[j];
-                }
+                if (arr[j] > temp) arr[j + 1] = arr[j];
             }
             arr[j + 1] = temp;
         }
