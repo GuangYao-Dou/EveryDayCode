@@ -1,5 +1,6 @@
 package com.dgy.LeetCode;
 import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
+import sun.reflect.generics.tree.Tree;
 
 import java.util.*;
 
@@ -45,5 +46,30 @@ public class Solution144 {
         if (root.right != null){
             preorderTraversal1(root.right, list);
         }
+    }
+
+    /*
+    ==================================0818=====================
+     */
+    List<Integer> nodeList = new ArrayList<>();
+    public List<Integer> preorderTraversal0818(TreeNode root) {
+        if (root == null) return null;
+        nodeList.add(root.val);
+        if (root.left != null) preorderTraversal0818(root.left);
+        if (root.right != null) preorderTraversal0818(root.right);
+        return nodeList;
+    }
+
+    public List<Integer> preorderTraversal08182(TreeNode root) {
+        if (root == null) return new ArrayList<>();
+        List<Integer> nodeList = new ArrayList<> ();
+        Stack<TreeNode> stack = new Stack<>();
+        while (root != null || !stack.isEmpty()){
+            if (root == null) root = stack.pop();
+            if (root.right != null) stack.push(root.right);
+            nodeList.add(root.val);
+            root = root.left;
+        }
+        return nodeList;
     }
 }
