@@ -13,19 +13,21 @@ public class BubbleSort {
         int[] arr = Utils.getRandomArr(20, 10);
         System.out.println("排序前：");
         Utils.display(arr);
+        long start = System.nanoTime();
         bubbleSort(arr);
+        long end = System.nanoTime();
         System.out.println("排序后");
         Utils.display(arr);
+        System.out.println("用时："+(end - start));
     }
     public static void bubbleSort(int[] arr){
-        if (arr == null || arr.length == 0) return;
-        int temp;
+        if(arr == null || arr.length == 0) return;
         for (int i = 0; i < arr.length; i++){
             for (int j = 0; j < arr.length - 1 - i; j++){
                 if (arr[j] > arr[j + 1]){
-                    temp = arr[j];
-                    arr[j] = arr[j+1];
-                    arr[j+1] = temp;
+                    int temp = arr [j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
                 }
             }
         }
