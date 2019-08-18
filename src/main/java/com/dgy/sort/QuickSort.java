@@ -1,5 +1,7 @@
 package com.dgy.sort;
 
+import java.util.Arrays;
+
 /**
  * Date: 2019/8/16
  * Time: 15:35
@@ -12,8 +14,11 @@ public class QuickSort {
         System.out.println("排序前：");
         Utils.display(arr);
         System.out.println("排序后：");
-        quickSort(arr,0, arr.length - 1);
+        long start = System.nanoTime();
+        quickSort1(arr,0, arr.length - 1);
+        long end = System.nanoTime();
         Utils.display(arr);
+        System.out.println("用时："+(end - start));
     }
     public static void quickSort(int[] arr, int low, int high){
         int i,j,temp,t;
@@ -47,5 +52,28 @@ public class QuickSort {
         quickSort(arr, low, j-1);
         //递归调用右半数组
         quickSort(arr, j+1, high);
+    }
+
+    public static void quickSort1(int[] arr, int start, int end){
+        if (start > end){
+            return;
+        }
+        int i, j, key;
+        i = start;
+        j = end;
+        key = arr[start];
+        while (i < j){
+            while (i < j && arr[i] <= key) i++;
+            while (i < j && arr[j] >= key) j--;
+            if (i < j) {
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+        arr[start] = arr [j];
+        arr[j] = key;
+        quickSort(arr, start, i - 1);
+        quickSort(arr, i + 1, arr.length - 1);
     }
 }
