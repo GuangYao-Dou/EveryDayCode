@@ -10,11 +10,11 @@ import java.util.Random;
  */
 public class Utils {
     private Utils(){}
-    public static int[] getRandomArr(int bround, int amount){
+    public static int[] getRandomArr(int boundary, int amount){
         Random random = new Random();
         int[] arr = new int[amount];
         for (int i = 0; i < amount; i++){
-            arr[i] = random.nextInt(bround);
+            arr[i] = random.nextInt(boundary);
         }
         return arr;
     }
