@@ -1,5 +1,7 @@
 package com.dgy.sort;
 
+import sun.util.resources.cldr.es.TimeZoneNames_es_419;
+
 import javax.rmi.CORBA.Util;
 
 /**
@@ -11,10 +13,10 @@ import javax.rmi.CORBA.Util;
 public class SelectSort {
 
     public static void main(String[] args) {
-        int[] randomArr = Utils.getRandomArr(20, 8);
+        int[] randomArr = Utils.getRandomArr(20, 100);
         System.out.println("排序前");
         Utils.display(randomArr);
-        selectSort(randomArr);
+        selectSort1(randomArr);
         System.out.println("排序后：");
         Utils.display(randomArr);
     }
@@ -28,6 +30,19 @@ public class SelectSort {
             int tmp = arr[i];
             arr[i] = arr[temp];
             arr[temp] = tmp;
+        }
+    }
+
+    public static void selectSort1(int[] arr){
+        if (arr == null || arr.length == 0) return;
+        for (int i = 0; i < arr.length; i++){
+            int index = i;
+            for (int j = i + 1; j < arr.length; j++){
+                if (arr[index] > arr[j]) index = j;
+            }
+            int temp = arr [index];
+            arr[index] = arr[i];
+            arr[i] = temp;
         }
     }
 }
