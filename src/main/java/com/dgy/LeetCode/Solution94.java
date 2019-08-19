@@ -38,19 +38,16 @@ public class Solution94 {
     //非递归实现
     public List<Integer> inorderTraversal2(TreeNode root) {
         List<Integer> list = new LinkedList<>();
-        if (root == null){
-            return list;
-        }
+        if (root == null) return list;
         Stack<TreeNode> stack = new Stack<>();
-        TreeNode cur = root;
-        while (!stack.isEmpty() || cur != null){
-            if (cur != null){
-                stack.push(cur);
-                cur = cur.left;
+        while (!stack.isEmpty() || root != null){
+            if (root != null){
+                stack.push(root);
+                root = root.left;
             }else {
-                cur = stack.pop();
-                list.add(cur.val);
-                cur = cur.right;
+                root = stack.pop();
+                list.add(root.val);
+                root = root.right;
             }
         }
         return list;
