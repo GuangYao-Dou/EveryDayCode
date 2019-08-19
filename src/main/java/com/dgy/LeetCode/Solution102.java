@@ -59,4 +59,24 @@ public class Solution102 {
         }
         return result;
     }
+
+    public List<List<Integer>> hierTest(TreeNode root){
+        if (root == null) return new ArrayList<>();
+        List<List<Integer>> result = new ArrayList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            List<Integer> list = new ArrayList<>();
+            int count = queue.size();
+            while (count > 0){
+                TreeNode temp = queue.poll();
+                list.add(temp.val);
+                if (temp.left != null) queue.add(temp.left);
+                if (temp.right != null) queue.add(temp.right);
+                count--;
+            }
+            result.add(list);
+        }
+        return result;
+    }
 }
