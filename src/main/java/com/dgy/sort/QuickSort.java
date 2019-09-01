@@ -15,7 +15,7 @@ public class QuickSort {
         Utils.display(arr);
         System.out.println("排序后：");
         long start = System.nanoTime();
-        quickSort(arr,0, arr.length - 1);
+        quickSort1(arr,0, arr.length - 1);
         long end = System.nanoTime();
         Utils.display(arr);
         System.out.println("用时："+(end - start));
@@ -37,6 +37,26 @@ public class QuickSort {
         arr[start] = arr[i];
         arr[i] = key;
         quickSort(arr, start, i-1);
+        quickSort(arr, i + 1, end);
+    }
+
+    public static void quickSort1(int [] arr, int start, int end) {
+        if (start > end) return;
+        int i = start;
+        int j = end;
+        int key = arr[start];
+        while (i < j){
+            while (i < j && arr[j] >= key) j--;
+            while (i < j && arr[i] <= key) i++;
+            if (i < j){
+                int temp = arr[j];
+                arr[j] = arr[i];
+                arr[i] = temp;
+            }
+        }
+        arr[start] = arr[i];
+        arr[i] = key;
+        quickSort1(arr, 0, i - 1);
         quickSort(arr, i + 1, end);
     }
 }
