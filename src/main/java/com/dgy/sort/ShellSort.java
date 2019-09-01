@@ -17,7 +17,7 @@ public class ShellSort {
     }
     public static void shellSort(int[] arr){
         for (int i = arr.length / 2; i >= 1; i = i / 2){
-            shellSortIn(arr, i);
+            shellSort(arr, i);
         }
     }
     public static void shellSortIn(int[] arr, int distance){
@@ -27,6 +27,18 @@ public class ShellSort {
             for (j = i - distance; j >= 0; j = j - distance){
                 if (arr[j] <= temp) break;
                 if (arr[j] > temp) arr[j + distance] = arr[j];
+            }
+            arr[j + distance] = temp;
+        }
+    }
+
+    public static void shellSort(int [] arr, int distance) {
+        for (int i = distance; i < arr.length; i = i + distance){
+            int j;
+            int temp = arr[i];
+            for (j = i - distance; j >= 0; j = j-distance){
+                if (arr[j] <= temp) break;
+                arr[j + distance] = arr[j];
             }
             arr[j + distance] = temp;
         }
