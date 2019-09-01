@@ -16,7 +16,7 @@ public class SelectSort {
         int[] randomArr = Utils.getRandomArr(20, 10);
         System.out.println("排序前");
         Utils.display(randomArr);
-        selectSort2(randomArr);
+        selectSort3(randomArr);
         System.out.println("排序后：");
         Utils.display(randomArr);
     }
@@ -59,4 +59,18 @@ public class SelectSort {
             arr[i] = temp;
         }
     }
+
+    public static void selectSort3(int [] arr) {
+        int index;
+        for (int i = 0; i < arr.length; i++){
+            index = i;
+            for (int j = i + 1; j < arr.length; j++){
+                if (arr[j] < arr[index]) index = j;
+            }
+            int temp = arr[i];
+            arr[i] = arr[index];
+            arr[index] = temp;
+        }
+    }
+
 }
