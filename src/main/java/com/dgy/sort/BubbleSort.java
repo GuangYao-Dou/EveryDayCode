@@ -14,7 +14,7 @@ public class BubbleSort {
         System.out.println("排序前：");
         Utils.display(arr);
         long start = System.nanoTime();
-        bubbleSort(arr);
+        bubbleSort2(arr);
         long end = System.nanoTime();
         System.out.println("排序后");
         Utils.display(arr);
@@ -39,6 +39,18 @@ public class BubbleSort {
                 if (arr[j] > arr[j + 1]){
                     int temp = arr[j];
                     arr[j] = arr [j+1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+    }
+
+    public static void bubbleSort2(int[] arr){
+        for (int i = 0; i < arr.length; i++){
+            for (int j = 0; j < arr.length - 1 - i; j++){
+                if (arr[j] > arr[j + 1]){
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
                     arr[j + 1] = temp;
                 }
             }
