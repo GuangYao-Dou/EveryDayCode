@@ -8,7 +8,8 @@ import java.util.Stack;
  * Date: 2019/9/2
  * Time: 14:48
  * Author: vincent-Dou
- * Description：
+ * Description：二叉树的中序遍历
+ * https://leetcode-cn.com/problems/binary-tree-inorder-traversal/submissions/
  */
 public class InOrderTraversal {
 
