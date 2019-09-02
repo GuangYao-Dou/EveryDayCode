@@ -7,7 +7,8 @@ import java.util.Queue;
  * Date: 2019/9/2
  * Time: 16:26
  * Author: vincent-Dou
- * Description：
+ * Description：二叉树的最大深度
+ * https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/
  */
 public class Solution104 {
     public int maxDepth(TreeNode root) {
