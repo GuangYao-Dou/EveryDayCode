@@ -1,5 +1,7 @@
 package com.dgy.LeetCode;
 
+import jdk.nashorn.internal.runtime.linker.LinkerCallSite;
+
 /**
  * Date: 2019/8/12
  * Time: 16:02
@@ -25,5 +27,18 @@ public class Solution206 {
             cur = tmp;
         }
         return temp;
+    }
+
+    public static ListNode test0905(ListNode head){
+        ListNode result = null;
+        ListNode cur = head;
+        ListNode temp = null;
+        while (cur != null){
+            temp = cur.next;
+            cur.next = result;
+            result = cur;
+            cur = temp;
+        }
+        return result;
     }
 }
