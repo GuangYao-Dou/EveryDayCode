@@ -35,4 +35,18 @@ public class Solution203 {
         }
         return dummyHead.next;
     }
+
+    public static ListNode test0905(ListNode head, int val){
+        ListNode dummyHead = new ListNode(-1);
+        ListNode cur = dummyHead;
+        dummyHead.next = head;
+        while (cur.next != null){
+            if (cur.next.val == val){
+                cur.next = cur.next.next;
+            }else {
+                cur = cur.next;
+            }
+        }
+        return dummyHead.next;
+    }
 }
