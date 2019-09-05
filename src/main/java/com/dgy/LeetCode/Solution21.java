@@ -1,5 +1,7 @@
 package com.dgy.LeetCode;
 
+import java.util.List;
+
 /**
  * Date: 2019/8/12
  * Time: 16:45
@@ -29,6 +31,32 @@ public class Solution21 {
                 cur.next = cur2;
                 cur2 = cur2.next;
                 cur = cur.next;
+            }
+        }
+        if (cur1 == null){
+            cur.next = cur2;
+        }else {
+            cur.next = cur1;
+        }
+        return result.next;
+    }
+
+    public static ListNode test09005(ListNode l1, ListNode l2){
+        ListNode result = new ListNode(-1);
+        ListNode cur = result;
+        ListNode cur1 = l1;
+        ListNode cur2 = l2;
+        while (cur1 != null && cur2 != null){
+            if (cur1.val < cur2.val){
+                ListNode temp = new ListNode(cur1.val);
+                cur.next = temp;
+                cur = cur.next;
+                cur1 = cur1.next;
+            }else {
+                ListNode temp = new ListNode(cur2.val);
+                cur.next = temp;
+                cur = cur.next;
+                cur2 = cur2.next;
             }
         }
         if (cur1 == null){
