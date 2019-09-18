@@ -35,4 +35,25 @@ public class BSTToList {
         list.get(list.size() - 1).right = null;
         return list.get(0);
     }
+
+    public static TreeNode convert2(TreeNode root){
+        TreeNode head = new TreeNode(-1);
+        TreeNode cur = head;
+        Stack<TreeNode> stack = new Stack<>();
+        while (root != null || !stack.isEmpty()){
+            if(root != null){
+                stack.push(root);
+                root = root.left;
+            }else{
+                root = stack.pop();
+                cur.right = root;
+                root.left = cur;
+                cur = cur.right;
+                root = root.right;
+            }
+        }
+        head = head.right;
+        head.left = null;
+        return head;
+    }
 }
