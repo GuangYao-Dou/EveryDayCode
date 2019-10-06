@@ -24,4 +24,18 @@ public class Solution11 {
         }
         return result;
     }
+
+    public int maxArea2(int[] height) {
+        int result = 0;
+        for(int i = 0, j = height.length - 1; i < j; ){
+            int temp = (j - i) * Math.min(height [i], height [j]);
+            if (temp > result) result = temp;
+            if(height [j] < height [i]){
+                j--;
+            }else{
+                i++;
+            }
+        }
+        return result;
+    }
 }
