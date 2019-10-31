@@ -10,7 +10,7 @@ import java.util.Arrays;
  * Author: vincent-Dou
  * Description：
  */
-public class InsertSort {
+public class InsertSort  {
     public static void main(String[] args) {
         int[] arr = Utils.getRandomArr(20,10);
         System.out.println("排序前：");
@@ -53,7 +53,7 @@ public class InsertSort {
                 arr[j + 1] = arr[j];
             }
             arr[j + 1] = temp;
-            System.out.println(Arrays.toString(arr)+"   *****");
+            System.out.println(Arrays.toString(arr) + "   *****");
         }
     }
 
