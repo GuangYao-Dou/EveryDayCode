@@ -1,5 +1,7 @@
 package com.dgy.sort;
 
+import com.sun.org.apache.xpath.internal.WhitespaceStrippingElementMatcher;
+
 import java.util.Arrays;
 
 /**
@@ -58,5 +60,24 @@ public class QuickSort {
         arr[i] = key;
         quickSort1(arr, 0, i - 1);
         quickSort(arr, i + 1, end);
+    }
+
+    public void quickSort1211(int[] arr, int start, int end){
+        if(start > end) return;
+        int key = arr[start];
+        int i = start;
+        int j = end;
+        while (i < j){
+            while (i < j && arr[j] >= key) j--;
+            while (i < j && arr[i] <= key) i++;
+            if (i < j){
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+            arr[start] = arr[i];
+            quickSort1211(arr, 0, i - 1);
+            quickSort1211(arr, i+1, end);
+        }
     }
 }
