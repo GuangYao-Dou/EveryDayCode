@@ -27,7 +27,6 @@ public class Solution108 {
         // 左右等分建立左右子树，中间节点作为子树根节点，递归该过程
         return nums == null ? null : buildTree(nums, 0, nums.length - 1);
     }
-
     private TreeNode buildTree(int[] nums, int l, int r) {
         if (l > r) {
             return null;
