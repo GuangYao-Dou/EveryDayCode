@@ -2,10 +2,7 @@ package com.dgy.LeetCode;
 
 import org.omg.PortableServer.LIFESPAN_POLICY_ID;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * Date: 2019/8/6
@@ -73,6 +70,26 @@ public class Solution102 {
                 list.add(temp.val);
                 if (temp.left != null) queue.add(temp.left);
                 if (temp.right != null) queue.add(temp.right);
+                count--;
+            }
+            result.add(list);
+        }
+        return result;
+    }
+
+    public static List<List<Integer>> level1225(TreeNode root){
+        List<List<Integer>> result = new ArrayList<>();
+        if (root == null) return result;
+        Queue<TreeNode> que = new LinkedList<>();
+        que.offer(root);
+        while (!que.isEmpty()){
+            int count = que.size();
+            List<Integer> list = new ArrayList<>();
+            while (count > 0){
+                root = que.poll();
+                list.add(root.val);
+                if (root.left != null) que.offer(root.left);
+                if (root.right != null) que.offer(root.right);
                 count--;
             }
             result.add(list);
